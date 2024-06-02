@@ -1,6 +1,13 @@
 {
     "C_Cpp.default.compilerPath": "/usr/bin/g++",
     "files.associations": {
-        "numbers": "cpp"
+        "numbers": "cpp",
+        "functional": "cpp",
+        "vector": "cpp",
+        "unordered_map": "cpp",
+        "array": "cpp",
+        "string_view": "cpp",
+        "initializer_list": "cpp",
+        "utility": "cpp"
     }
 }
