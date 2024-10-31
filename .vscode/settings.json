@@ -21,6 +21,20 @@
         "stdexcept": "cpp",
         "chrono": "cpp",
         "random": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "__hash_table": "cpp",
+        "string": "cpp",
+        "unordered_set": "cpp",
+        "*.tcc": "cpp",
+        "__tree": "cpp",
+        "deque": "cpp",
+        "filesystem": "cpp",
+        "list": "cpp",
+        "map": "cpp",
+        "set": "cpp",
+        "bitset": "cpp",
+        "queue": "cpp",
+        "stack": "cpp",
+        "__node_handle": "cpp"
     }
 }
