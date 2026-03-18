@@ -8,30 +8,21 @@
 class Solution {
 public:
     vector<int> nextGreaterElements(vector<int>& nums) {
+        // 利用单调栈-小顶栈
         int n = nums.size();
-        vector<int> numsSorted = nums;
-        sort(numsSorted.begin(), numsSorted.end());
-        vector<int> ans(n);
-        
-        for(int i = 0; i < n; ++i) {
-            int v = nums[i];
-            int j = 0;
+        stack<int> st;
+        vector<int> ans(n, -1);
 
-            while(j <= n) {
-                if (j == n) {
-                    ans[i] = -1;
-                    break;
-                } else if (v >= numsSorted[j]) {
-                    j++;
-                } else {
-                    ans[i] = numsSorted[j];
-                    break;
-                }
+        // 将数组前 n-1 个元素加到 nums 数组末尾
+        // 实际操作用 i % n 带等效替代
+        for(int i = 0; i < 2*n - 1; ++i) {
+            while(!st.empty() && nums[st.top()] < nums[i%n]) {
+                ans[st.top()] = nums[i%n];
+                st.pop();
             }
+            st.push(i%n);
         }
-
         return ans;
-
     }
 };
 // @lc code=end
