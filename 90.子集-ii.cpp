@@ -21,7 +21,7 @@ public:
             if (j > i && nums[j] == nums[j-1]) {
                 continue;
             }
-            s.push_back(nums[i]);
+            s.push_back(nums[j]);
             backtracking(nums, ans, s, j+1);
             s.pop_back();
         }
