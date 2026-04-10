@@ -15,49 +15,52 @@ public:
         for(int i = 0; i < n; i++) {
             chessboard.push_back(vector<char>(n, '.'));
         }
-        backtracking(n, 0, chessboard, ans);
+        backtracking(0, chessboard, ans);
         return ans;
     }
 
-    void backtracking(int n, int row, vector<vector<char>> &chessboard, vector<vector<string>> &ans)
+    void backtracking(int row, vector<vector<char>> &chessboard, vector<vector<string>> &ans)
     {
-        if (chessboard.size() == n)
+        if (chessboard.size() == row)
         {
-            vector<vector<string>> sol;
+            vector<string> sol;
             for(auto item : chessboard) {
-                sol.push_back(string(item.begin(), item.end()))
+                sol.push_back(string(item.begin(), item.end()));
             }
-            ans.push_back(chessboard);
+            ans.push_back(sol);
             return;
         }
 
-        for(int i = 0; i < n; i++) {
-            if (canPlaceQueen(chessboard, row, i, n)) {
+        for(int i = 0; i < chessboard.size(); i++) {
+            if (canPlaceQueen(chessboard, row, i)) {
                 chessboard[row][i] = 'Q';
-                backtracking(n, row + 1, chessboard, ans);
+                backtracking(row + 1, chessboard, ans);
                 chessboard[row][i] = '.';
             }
         }
     }
 
-    bool canPlaceQueen(vector<vector<char>> &chessboard, int row, int col, int n)
+    bool canPlaceQueen(vector<vector<char>> &chessboard, int row, int col)
     {
         if (row == 0)
             return true;
 
         for (int i = row - 1; i >= 0; i--)
         {
+            // 检查同一列上是否有 Q
             if (chessboard[i][col] == 'Q')
             {
                 return false;
             }
 
+            // 检查左对角线
             if (col - (row - i) >= 0 && chessboard[i][col - (row - i)] == 'Q')
             {
                 return false;
             }
 
-            if (col + (row - i) < n && chessboard[i][col + (row - i)] == 'Q') {
+            // 检查右对角线
+            if (col + (row - i) < chessboard.size() && chessboard[i][col + (row - i)] == 'Q') {
                 return false;
             }
         }
