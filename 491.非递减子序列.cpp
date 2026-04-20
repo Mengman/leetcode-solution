@@ -10,8 +10,7 @@ public:
     vector<vector<int>> findSubsequences(vector<int>& nums) {
         vector<vector<int>> ans;
         vector<int> s;
-        // backtracking(nums, ans, s, 0);
-        backtrack2(nums, ans, s, 0);
+        backtracking(nums, ans, s, 0);
         return ans;
     }
 
