@@ -20,7 +20,9 @@ public:
 
         vector<vector<unsigned long long>> dp(m+1, vector<unsigned long long>(n+1, 0));
 
+        // 空字符串 s[:0] 不包含任何子串
         for(int j = 0; j <= n; ++j) dp[m][j] = 0;
+        // 空字符串 t[:0] 是任何字符串的子串
         for(int i = 0; i <= m; ++i) dp[i][n] = 1;
 
         for(int i = m - 1; i >= 0; --i) {
